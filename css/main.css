@@ -122,11 +122,16 @@ textarea {
     min-width: 107px; /*  767 - 600 */
     padding : 10px;
     float: left;
+    clear: right;
 }
 
 .highlight {
     color : #FF6600;
     background : #FF6600; /*TODO get this working*/
+}
+
+.disabled {
+    color : #888888;
 }
 
 /* ==========================================================================
