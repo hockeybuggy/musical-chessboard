@@ -20,7 +20,7 @@ var fileToNoteMap = {
     "d" : "D",
     "e" : "E",
     "f" : "F",
-    "g" : "C",
+    "g" : "G",
     "h" : "B" 
 };
 
@@ -55,12 +55,15 @@ function update_settings() {
 
 function update_sound_mapping(){
     var i;
-    console.log(fileMap.size);
+    var new_fileToNoteMap = {};
+    //console.log(fileMap.size);
     for (var k in fileMap) {
-        selected_options = $("#file_" + fileMap[k]).find(":selected").text(); // TODO here
-        console.log(selected_options);
+        newNote = $("#file_" + fileMap[k]).find(":selected").text(); // TODO here
+        //console.log(newNote);
+        new_fileToNoteMap[fileMap[k]] = newNote;
     }
-    //console.log(event.jquery get selec);
+    console.log(new_fileToNoteMap);
+    fileToNoteMap = new_fileToNoteMap;
 }
 
 function bind_squares(){
@@ -91,6 +94,7 @@ function play_square($square){
     var note = get_note($square.context.id); // the MIDI note
     var velocity = 127; // how hard the note hits
 
+    // TODO consider a loading thing...
     MIDI.setVolume(0, 127);
     MIDI.noteOn(0, note, velocity, delay);
     MIDI.noteOff(0, note, delay + 0.75);
@@ -98,7 +102,6 @@ function play_square($square){
 
 function get_note(squareId){
     file = squareId[0];
-    //noteStr <- some mapping from file to notes
     noteStr = fileToNoteMap[file];
     console.log(noteStr);
     noteNum = get_note_number(noteStr, 4);
