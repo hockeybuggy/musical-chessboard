@@ -118,12 +118,17 @@ textarea {
 }
 #sidebar_container {
     background : #eee;
-    width: 40%;
-    min-width: 107px; /*  767 - 600 */
+    width: 20%; /*TODO ramp this back up when adding a rank map too*/
+    min-width: 50px; /*  767 - 600 */
     padding : 10px;
     float: left;
     clear: right;
 }
+
+.control-group {
+    padding : 0.6em;
+}
+
 
 .highlight {
     color : #FF6600;

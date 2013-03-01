@@ -13,17 +13,55 @@ var fileMap = {
     7 : "h"
 };
 
+var fileToNoteMap = {
+    "a" : "A",
+    "b" : "Bb",
+    "c" : "C",
+    "d" : "D",
+    "e" : "E",
+    "f" : "F",
+    "g" : "C",
+    "h" : "B" 
+};
+
+var noteToMidiMap = {
+    "C":0,
+    "C#":1,
+    "D":2,
+    "D#":3,
+    "E":4,
+    "F":5,
+    "F#":6,
+    "G":7,
+    "G#":8,
+    "A":9,
+    "Bb":10,
+    "B":11
+};
 
 init_board();
 init_sound();
 bind_squares();
 
-$settings.on( "change", function(){
+$settings.on( "change", update_settings);
+
+
+function update_settings() {
     console.log(event);
     if (event.target.tagName === "SELECT") {
-        console.log("SELECT!!!");
+        update_sound_mapping();
     }
-});
+}
+
+function update_sound_mapping(){
+    var i;
+    console.log(fileMap.size);
+    for (var k in fileMap) {
+        selected_options = $("#file_" + fileMap[k]).find(":selected").text(); // TODO here
+        console.log(selected_options);
+    }
+    //console.log(event.jquery get selec);
+}
 
 function bind_squares(){
     $board.on("click", handle_square_click);
@@ -48,7 +86,7 @@ function highlight_square($square){
 }
 
 function play_square($square){
-    console.log($square);
+    //console.log($square);
     var delay = 0; // play one note every quarter second
     var note = get_note($square.context.id); // the MIDI note
     var velocity = 127; // how hard the note hits
@@ -59,22 +97,17 @@ function play_square($square){
 }
 
 function get_note(squareId){
-    console.log(squareId);
-    fileMap = {
-        "a": 45,
-        "b": 46, // Bb
-        "c": 48,
-        "d": 50,
-        "e": 52,
-        "f": 53,
-        "g": 56,
-        "h": 47, // B
-    }
     file = squareId[0];
-    //rank = squareId[1];
-    return(fileMap[file]);
+    //noteStr <- some mapping from file to notes
+    noteStr = fileToNoteMap[file];
+    console.log(noteStr);
+    noteNum = get_note_number(noteStr, 4);
+    return(noteNum);
 }
 
+function get_note_number(noteStr, octave) {
+    return(noteToMidiMap[noteStr] + octave * 12); 
+}
 
 function init_board(){
     // This is what I used to generate the board in the first place.
