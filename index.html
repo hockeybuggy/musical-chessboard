@@ -44,8 +44,37 @@
                     </label>
 
                     <h3> Note Mapping </h3>
+                    
+                    <h4> Rank </h4>
+                    <div>
+                        <label class="radio">
+                            <input name="octavePreset" id="flat" value="flat" type="radio" checked>
+                            Flat
+                        </label>
+                    </div>
+                    <div>
+                        <label class="radio"> 
+                            <input name="octavePreset" id="vally" value="vally" type="radio">
+                            Vally
+                        </label>
+                    </div>
+                    <div>
+                        <label class="radio"> 
+                            <input name="octavePreset" id="mountain" value="mountain" type="radio">
+                            Mountain
+                        </label>
+                    </div>
 
-                    <h4> Presets </h4>
+                    <input type="hidden" name="rank_1" id="rank_1" value="4">
+                    <input type="hidden" name="rank_2" id="rank_2" value="4">
+                    <input type="hidden" name="rank_3" id="rank_3" value="4">
+                    <input type="hidden" name="rank_4" id="rank_4" value="4">
+                    <input type="hidden" name="rank_5" id="rank_5" value="4">
+                    <input type="hidden" name="rank_6" id="rank_6" value="4">
+                    <input type="hidden" name="rank_7" id="rank_7" value="4">
+                    <input type="hidden" name="rank_8" id="rank_8" value="4">
+
+                    <h4> File Presets </h4>
 
                     <div>
                         <label class="radio">
@@ -55,14 +84,12 @@
                     </div>
                     <div>
                         <label class="radio"> 
-                            <!--TODO add tool tip to say that this is disabled.-->
                             <input name="notePreset" id="jazz" value="jazz" type="radio">
                             C Bebop Scale
                         </label>
                     </div>
                     <div>
                         <label class="radio"> 
-                            <!--TODO add tool tip to say that this is disabled.-->
                             <input name="notePreset" id="scale" value="scale" type="radio">
                             C Major Scale
                         </label>
