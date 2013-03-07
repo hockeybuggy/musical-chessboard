@@ -13,7 +13,7 @@ var fileMap = {
     7 : "h"
 };
 
-var fileToNoteMap = {
+var germanNoteMap = {
     "a" : "A",
     "b" : "Bb",
     "c" : "C",
@@ -51,6 +51,41 @@ function update_settings() {
     if (event.target.tagName === "SELECT") {
         update_sound_mapping();
     }
+    else if (event.target.name === "notePreset") {
+        if (event.target.id === "german") {
+            preset_german();
+        }
+        else if (event.target.id === "scale") {
+            preset_scale();
+        }
+    }
+}
+
+function preset_german(){ 
+    console.log("German");
+    // German note map
+    var i = 0;
+    for(var note in germanNoteMap){
+        set_option("file_" + fileMap[i++],"C");
+    }
+}
+
+function preset_scale(){ 
+    console.log("Scale");
+}
+
+function set_option(selectId, optionId) {
+    //selectId  the id of the select you wish to change the selected option of
+    //optionId  the id of the new option you wish selected
+    //eg  set_option("file_a", "C");   , sets the select for the file a to C
+    var i;
+    selectEle = document.getElementById(selectId);
+    console.log(selectEle);
+    for(i = 0; i < selectEle.options.length; i += 1) {
+        if(selectEle.options[i].value == optionId){
+            selectEle.selectedIndex = i;
+        }
+    }
 }
 
 function update_sound_mapping(){
@@ -63,7 +98,7 @@ function update_sound_mapping(){
         new_fileToNoteMap[fileMap[k]] = newNote;
     }
     console.log(new_fileToNoteMap);
-    fileToNoteMap = new_fileToNoteMap;
+    germanNoteMap = new_fileToNoteMap;
 }
 
 function bind_squares(){
@@ -102,7 +137,7 @@ function play_square($square){
 
 function get_note(squareId){
     file = squareId[0];
-    noteStr = fileToNoteMap[file];
+    noteStr = germanNoteMap[file];
     console.log(noteStr);
     noteNum = get_note_number(noteStr, 4);
     return(noteNum);
@@ -135,11 +170,11 @@ window.onload = function () {
         soundfontUrl: "./soundfont/",
         instrument: "acoustic_grand_piano",
         callback: function() {
+            // TODO add a loading screen
             var delay = 0; // play one note every quarter second
             var note = 50; // the MIDI note
             var velocity = 127; // how hard the note hits
             // play the note
-            // TODO add a loading screen
             MIDI.setVolume(0, 127);
             MIDI.noteOn(0, note, velocity, delay);
             MIDI.noteOff(0, note, delay + 0.75);
