@@ -8,9 +8,15 @@ A toy project playing with midi in the browser
 - Automate the creation of the selects
     use the note preset array for the defauts.
 
-- create mapping presets for sound
-    German notation
-    A squential scale of 8 notes
+- Change the ocatve by rank
+
+- Change the shade by rank
+
+- Change the colour of the side bar
+    Make sections more clear
+    Imply File is a subsection of Presets
+
+- Add octave mapping by rank
 
 - colour squares by sound. 
     Each of the 12 notes would get a colour.

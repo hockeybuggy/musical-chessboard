@@ -13,6 +13,8 @@ var fileMap = {
     7 : "h"
 };
 
+var currentNoteMap;
+
 var germanNoteMap = {
     "a" : "A",
     "b" : "Bb",
@@ -22,6 +24,39 @@ var germanNoteMap = {
     "f" : "F",
     "g" : "G",
     "h" : "B" 
+};
+
+var scaleNoteMap = {
+    "a" : "C",
+    "b" : "D",
+    "c" : "E",
+    "d" : "F",
+    "e" : "G",
+    "f" : "A",
+    "g" : "B",
+    "h" : "C" 
+};
+
+var jazzNoteMap = {
+    "a" : "C",
+    "b" : "D",
+    "c" : "E",
+    "d" : "F",
+    "e" : "G",
+    "f" : "A",
+    "g" : "Bb",
+    "h" : "B" 
+};
+
+var FlatOctaveMap = {
+    "1" : "4",
+    "2" : "4",
+    "3" : "4",
+    "4" : "4",
+    "5" : "4",
+    "6" : "4",
+    "7" : "4",
+    "8" : "4" 
 };
 
 var noteToMidiMap = {
@@ -53,25 +88,25 @@ function update_settings() {
     }
     else if (event.target.name === "notePreset") {
         if (event.target.id === "german") {
-            preset_german();
+            set_preset(germanNoteMap);
+        }
+        else if (event.target.id === "jazz") {
+            set_preset(jazzNoteMap);
         }
         else if (event.target.id === "scale") {
-            preset_scale();
+            set_preset(scaleNoteMap);
         }
     }
 }
 
-function preset_german(){ 
-    console.log("German");
-    // German note map
+function set_preset(noteMap){ 
+    console.log(noteMap);
     var i = 0;
-    for(var note in germanNoteMap){
-        set_option("file_" + fileMap[i++],"C");
+    for(var mapping in noteMap){
+        //console.log(noteMap[mapping]);
+        set_option("file_" + fileMap[i++], noteMap[mapping]);
     }
-}
-
-function preset_scale(){ 
-    console.log("Scale");
+    update_sound_mapping();
 }
 
 function set_option(selectId, optionId) {
@@ -80,7 +115,7 @@ function set_option(selectId, optionId) {
     //eg  set_option("file_a", "C");   , sets the select for the file a to C
     var i;
     selectEle = document.getElementById(selectId);
-    console.log(selectEle);
+    //console.log(selectEle);
     for(i = 0; i < selectEle.options.length; i += 1) {
         if(selectEle.options[i].value == optionId){
             selectEle.selectedIndex = i;
@@ -97,8 +132,8 @@ function update_sound_mapping(){
         //console.log(newNote);
         new_fileToNoteMap[fileMap[k]] = newNote;
     }
-    console.log(new_fileToNoteMap);
-    germanNoteMap = new_fileToNoteMap;
+    //console.log(new_fileToNoteMap);
+    currentNoteMap = new_fileToNoteMap;
 }
 
 function bind_squares(){
@@ -137,7 +172,7 @@ function play_square($square){
 
 function get_note(squareId){
     file = squareId[0];
-    noteStr = germanNoteMap[file];
+    noteStr = currentNoteMap[file];
     console.log(noteStr);
     noteNum = get_note_number(noteStr, 4);
     return(noteNum);
@@ -165,10 +200,12 @@ function init_board(){
     //console.log($board.html());
 }
 function init_sound() {
-window.onload = function () {
+    currentNoteMap = germanNoteMap;
+
+    window.onload = function () {
     MIDI.loadPlugin({
         soundfontUrl: "./soundfont/",
-        instrument: "acoustic_grand_piano",
+        instrument: "acoustic_grand_piano", // TODO allow for guitar as well
         callback: function() {
             // TODO add a loading screen
             var delay = 0; // play one note every quarter second
