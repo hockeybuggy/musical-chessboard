@@ -1,4 +1,6 @@
 index.html
 js/main.js
+js/maps.js
 css/main.css
 README.md
+.toc

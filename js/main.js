@@ -1,6 +1,9 @@
+//This file contains the main logic for the music app.
 
 var $board = $("#board");
 var $settings = $("#sidebar_form");
+var currentNoteMap;
+var currentOctaveMap;
 
 var fileMap = {
     0 : "a",
@@ -11,75 +14,6 @@ var fileMap = {
     5 : "f",
     6 : "g",
     7 : "h"
-};
-
-var currentNoteMap;
-var currentOctaveMap;
-
-var germanNoteMap = {
-    "a" : "A",
-    "b" : "Bb",
-    "c" : "C",
-    "d" : "D",
-    "e" : "E",
-    "f" : "F",
-    "g" : "G",
-    "h" : "B" 
-};
-
-var scaleNoteMap = {
-    "a" : "C",
-    "b" : "D",
-    "c" : "E",
-    "d" : "F",
-    "e" : "G",
-    "f" : "A",
-    "g" : "B",
-    "h" : "C" 
-};
-
-var jazzNoteMap = {
-    "a" : "C",
-    "b" : "D",
-    "c" : "E",
-    "d" : "F",
-    "e" : "G",
-    "f" : "A",
-    "g" : "Bb",
-    "h" : "B" 
-};
-
-var flatOctaveMap = {
-    "1" : 4,
-    "2" : 4,
-    "3" : 4,
-    "4" : 4,
-    "5" : 4,
-    "6" : 4,
-    "7" : 4,
-    "8" : 4 
-};
-
-var vallyOctaveMap = {
-    "1" : 5,
-    "2" : 4,
-    "3" : 3,
-    "4" : 2,
-    "5" : 2,
-    "6" : 3,
-    "7" : 4,
-    "8" : 5 
-};
-
-var mountainOctaveMap = {
-    "1" : 2,
-    "2" : 3,
-    "3" : 4,
-    "4" : 5,
-    "5" : 5,
-    "6" : 4,
-    "7" : 3,
-    "8" : 2 
 };
 
 var noteToMidiMap = {
@@ -198,12 +132,10 @@ function handle_square_click() {
 
 function highlight_square($square){
     //console.log($square);
-    $square.addClass("highlight");
-    //$square.css("background-color", "#FF6600"); //TODO fix just adding the class
-    //console.log($square);
+    previous_colour = $square.context.style.backgroundColor; // NOTE  canadian spelling... WARNING
+    $square.css("background-color", "#FF6600");
     window.setTimeout(function(){
-        $square.removeClass("highlight");
-        //$square.css("background-color", "#ffffff");
+        $square.css("background-color", previous_colour);
     }, 500);
 }
 

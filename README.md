@@ -5,6 +5,14 @@ A toy project playing with midi in the browser
 
 ##TODO
 
+- Tests? 
+
+- jslint or jshint
+
+- grunt
+
+- sass
+
 - Automate the creation of the selects
     use the note preset array for the defauts.
 
@@ -25,6 +33,5 @@ A toy project playing with midi in the browser
 
 - move rank and file outside of squares
 
-- colour squares rather than text
-
 - cut way down on the jquery... Like a lot...
+
