@@ -8,8 +8,6 @@ A toy project playing with midi in the browser
 - Automate the creation of the selects
     use the note preset array for the defauts.
 
-- Change the ocatve by rank
-
 - Change the shade by rank
 
 - Change the colour of the side bar

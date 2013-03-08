@@ -61,25 +61,25 @@ var flatOctaveMap = {
 };
 
 var vallyOctaveMap = {
-    "1" : 4,
+    "1" : 5,
     "2" : 4,
-    "3" : 4,
-    "4" : 4,
-    "5" : 4,
-    "6" : 4,
+    "3" : 3,
+    "4" : 2,
+    "5" : 2,
+    "6" : 3,
     "7" : 4,
-    "8" : 4 
+    "8" : 5 
 };
 
 var mountainOctaveMap = {
-    "1" : 4,
-    "2" : 4,
+    "1" : 2,
+    "2" : 3,
     "3" : 4,
-    "4" : 4,
-    "5" : 4,
+    "4" : 5,
+    "5" : 5,
     "6" : 4,
-    "7" : 4,
-    "8" : 4 
+    "7" : 3,
+    "8" : 2 
 };
 
 var noteToMidiMap = {
@@ -107,18 +107,21 @@ $settings.on( "change", update_settings);
 function update_settings() {
     console.log(event);
     if (event.target.tagName === "SELECT") {
-        update_sound_mapping();
+        setNoteMap(get_manual_noteMap());
     }
 
     else if (event.target.name === "notePreset") {
         if (event.target.id === "german") {
-            set_preset(germanNoteMap);
+            set_manual_selects_to_preset(germanNoteMap);
+            set_note_mapping(germanNoteMap);
         }
         else if (event.target.id === "jazz") {
-            set_preset(jazzNoteMap);
+            set_manual_selects_to_preset(jazzNoteMap);
+            set_note_mapping(jazzNoteMap);
         }
         else if (event.target.id === "scale") {
-            set_preset(scaleNoteMap);
+            set_manual_selects_to_preset(scaleNoteMap);
+            set_note_mapping(scaleNoteMap);
         }
     }
 
@@ -135,24 +138,24 @@ function update_settings() {
     }
 }
 
-function set_preset(noteMap){ 
+function set_manual_selects_to_preset(noteMap){ 
     console.log(noteMap);
     var i = 0;
     for(var mapping in noteMap){
         //console.log(noteMap[mapping]);
         set_option("file_" + fileMap[i++], noteMap[mapping]);
     }
-    update_sound_mapping();
 }
 
+function set_note_mapping(noteMap){
+    console.log(noteMap);
+    currentNoteMap = noteMap;
+    //get_manual_noteMap();
+}
 function set_octave_mapping(octaveMap){
     console.log(octaveMap);
-    var i = 0;
-    for(var mapping in octaveMap){
-        //console.log(noteMap[mapping]);
-        set_option("rank_" + i++ , octaveMap[mapping]);
-    }
-    update_sound_mapping();
+    currentOctaveMap = octaveMap;
+    //get_manual_noteMap();
 }
 
 function set_option(selectId, optionId) {
@@ -169,23 +172,17 @@ function set_option(selectId, optionId) {
     }
 }
 
-function update_sound_mapping(){
-    var i;
+function get_manual_noteMap(){
     var new_fileToNoteMap = {};
     //console.log(fileMap.size);
     for (var k in fileMap) {
         newNote = $("#file_" + fileMap[k]).find(":selected").text(); // TODO here
         new_fileToNoteMap[fileMap[k]] = newNote;
     }
-    for (var k in rankMap) {
-        newNote = $("#rank_" + k).find(":selected").text(); // TODO here
-        console.log(newNote);
-        console.log(k);
-        new_rankToOctaveMap[k] = newOctave;
-    }
     //console.log(new_fileToNoteMap);
-    currentOctaveMap = new_rankToOctaveMap;
-    currentNoteMap = new_fileToNoteMap;
+    //currentOctaveMap = new_rankToOctaveMap;
+    return(new_fileToNoteMap)
+    //update_sound_mapping(new_fileToNoteMap, new_rankToOctaveMap);
 }
 
 function bind_squares(){
@@ -225,7 +222,7 @@ function play_square($square){
 function get_note(squareId){
     file = squareId[0];
     rank = squareId[1];
-    console.log(rank);
+    //console.log(rank);
     noteStr = currentNoteMap[file];
     octave = currentOctaveMap[rank]
     console.log(noteStr);
