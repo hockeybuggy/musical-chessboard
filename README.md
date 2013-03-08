@@ -30,3 +30,4 @@ A toy project playing with midi in the browser
 
 - cut way down on the jquery... Like a lot...
 
+- Fix the problem where event is google chrome only object... fire this fox up!

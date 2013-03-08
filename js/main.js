@@ -190,9 +190,10 @@ function init_board(){
         $board.append(row);
     }
     // These are done here so that they are set after the checkering rule in the css
-    $(".rank_label").css("background-color", "#cccccc").css("width", "20px");
-    $(".file_label").css("background-color", "#cccccc").css("height", "20px");
+    $(".rank_label").css("background-color", "#aaaaaa").css("width", "20px");
+    $(".file_label").css("background-color", "#aaaaaa").css("height", "20px");
 }
+
 function init_sound() {
     currentNoteMap = germanNoteMap; // Set default mappings
     currentOctaveMap = flatOctaveMap;
