@@ -105,7 +105,19 @@ textarea {
     height : 80px;
     text-align : center;
     vertical-align : middle;
+    user-select: none;
+    -o-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
 }
+
+/*THIS IS SET IN JAVASCRIPT*/
+/*td.rank_label {*/
+    /*background : #fff;*/
+    /*width  : 20px;*/
+/*}*/
+
 #board tr:nth-child(odd)  td:nth-child(even),
 #board tr:nth-child(even) td:nth-child(odd) {
     background : #ccc;

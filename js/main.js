@@ -171,16 +171,27 @@ function init_board(){
     // This could be useful if this signifcanlty reduces file size and does not
     // impact load time too much
     var i, j;
-    var row = "";
-    for(i = 1; i <= 8; i += 1){
+    // The Board's Header
+    var row = "<tr><td class='file_label rank_label'></td>";
+    for(i=0; i < 8; i += 1) {
+        row += "<td class='file_label'>" + fileMap[i] + "</td>";
+    }
+    row += "</tr>";
+    $board.append(row + "</tr>");
+    // The Board
+    for(i = 8; i > 0; i -= 1){
         row = "<tr>";
+        row += "<td class='rank_label' id='rank_label_"+ i +"'>"+ i +"</td>";
         for(j = 0; j < 8; j += 1){
             squareId = fileMap[j] + i;
-            row += "<td class='square' id='" + squareId + "'>"+ squareId +"</td>";
+            row += "<td class='square' id='" + squareId + "'></td>";
         }
         row += "</tr>";
         $board.append(row);
     }
+    // These are done here so that they are set after the checkering rule in the css
+    $(".rank_label").css("background-color", "#cccccc").css("width", "20px");
+    $(".file_label").css("background-color", "#cccccc").css("height", "20px");
 }
 function init_sound() {
     currentNoteMap = germanNoteMap; // Set default mappings
