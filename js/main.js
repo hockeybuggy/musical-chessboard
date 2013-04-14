@@ -31,6 +31,24 @@ var noteToMidiMap = {
     "B":11
 };
 
+var noteToColourMap = {
+    "C":"#00BF32",
+    "C#":"#38DF64",
+    "D":"#04819E",
+    "D#":"#38B2CE",
+    "E":"#FF7F00",
+    "F":"#FF1E00",
+    "F#":"#FF5640",
+    "G":"#FFC900",
+    "G#":"#FFF200",
+    "A":"#600CAC",
+    "Bb":"#8E41D5",
+    "B":"#2A17B1"
+};
+
+currentNoteMap = germanNoteMap; // Set default mappings
+currentOctaveMap = flatOctaveMap;
+
 init_board();
 init_sound();
 bind_squares();
@@ -41,7 +59,7 @@ $settings.on( "change", update_settings);
 function update_settings() {
     console.log(event);
     if (event.target.tagName === "SELECT") {
-        setNoteMap(get_manual_noteMap());
+        set_note_mapping(get_manual_noteMap());
     }
 
     else if (event.target.name === "notePreset") {
@@ -84,12 +102,21 @@ function set_manual_selects_to_preset(noteMap){
 function set_note_mapping(noteMap){
     console.log(noteMap);
     currentNoteMap = noteMap;
-    //get_manual_noteMap();
+    updateFileStyle();
 }
 function set_octave_mapping(octaveMap){
     console.log(octaveMap);
     currentOctaveMap = octaveMap;
     //get_manual_noteMap();
+}
+
+function updateFileStyle(){
+    for(var note in currentNoteMap){
+        console.log(currentNoteMap[note]);
+        lab = $(".file_label#" + note);
+        lab.css("background-color", noteToColourMap[currentNoteMap[note]]);
+    }
+
 }
 
 function set_option(selectId, optionId) {
@@ -174,7 +201,7 @@ function init_board(){
     // The Board's Header
     var row = "<tr><td class='file_label rank_label'></td>";
     for(i=0; i < 8; i += 1) {
-        row += "<td class='file_label'>" + fileMap[i] + "</td>";
+        row += "<td class='file_label' id='" + fileMap[i] + "'>" + fileMap[i] + "</td>";
     }
     row += "</tr>";
     $board.append(row + "</tr>");
@@ -192,12 +219,10 @@ function init_board(){
     // These are done here so that they are set after the checkering rule in the css
     $(".rank_label").css("background-color", "#aaaaaa").css("width", "20px");
     $(".file_label").css("background-color", "#aaaaaa").css("height", "20px");
+    updateFileStyle();
 }
 
 function init_sound() {
-    currentNoteMap = germanNoteMap; // Set default mappings
-    currentOctaveMap = flatOctaveMap;
-
     window.onload = function () {
     MIDI.loadPlugin({
         soundfontUrl: "./soundfont/",

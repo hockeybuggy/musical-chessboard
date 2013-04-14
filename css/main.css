@@ -112,12 +112,6 @@ textarea {
     -webkit-user-select: none;
 }
 
-/*THIS IS SET IN JAVASCRIPT*/
-/*td.rank_label {*/
-    /*background : #fff;*/
-    /*width  : 20px;*/
-/*}*/
-
 #board tr:nth-child(odd)  td:nth-child(even),
 #board tr:nth-child(even) td:nth-child(odd) {
     background : #ccc;
@@ -145,6 +139,13 @@ textarea {
 .highlight {
     color : #FF6600;
     background : #FF6600; /*TODO get this working*/
+}
+
+.file_label {
+    color: #FFFFFF;
+    font-size: 16px;
+    font-family: "sans-serif";
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .disabled {
