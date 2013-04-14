@@ -32,12 +32,12 @@ var noteToMidiMap = {
 };
 
 var octaveToColourMap = {
-    "1":"#00BF32",
-    "2":"#04819E",
-    "3":"#FF7F00",
-    "4":"#FF1E00",
-    "5":"#FFC900",
-    "6":"#600CAC"
+    "1":"#333333",
+    "2":"#444444",
+    "3":"#555555",
+    "4":"#666666",
+    "5":"#777777",
+    "6":"#888888"
 };
 var noteToColourMap = {
     "C":"#00BF32",
@@ -61,10 +61,9 @@ init_board();
 init_sound();
 bind_squares();
 
-$settings.on( "change", update_settings);
+$settings.on("change", update_settings);
 
-
-function update_settings() {
+function update_settings(event) {
     console.log(event);
     if (event.target.tagName === "SELECT") {
         set_note_mapping(get_manual_noteMap());
