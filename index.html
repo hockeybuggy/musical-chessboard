@@ -31,199 +31,190 @@
 
             <div id="sidebar_container">
                 <h4>Click a square to play a note.</h4>
-                <form class="form-horizontal" id="sidebar_form" action="">
-                    <h3> Sounds </h3>
-                    <label class="radio inline">
-                        <input name="sound" id="piano" value="piano" type="radio" checked>
-                        Piano
-                    </label>
-                    <label class="radio inline disabled"> 
-                        <!--TODO add tool tip to say that this is disabled.-->
-                        <input name="sound" id="guitar" value="guitar" type="radio" disabled>
-                        Guitar
-                    </label>
+                <div id="sidebar_note_mapping">
+                    <form class="form-horizontal" id="sidebar_form" action="">
+                        <h3> Note Mapping </h3>
+                        
+                        <h4> Rank </h4>
+                        <div>
+                            <label class="radio">
+                                <input name="octavePreset" id="flat" value="flat" type="radio">
+                                Flat
+                            </label>
+                        </div>
+                        <div>
+                            <label class="radio"> 
+                                <input name="octavePreset" id="vally" value="vally" type="radio" checked>
+                                Vally
+                            </label>
+                        </div>
+                        <div>
+                            <label class="radio"> 
+                                <input name="octavePreset" id="mountain" value="mountain" type="radio">
+                                Mountain
+                            </label>
+                        </div>
 
-                    <h3> Note Mapping </h3>
-                    
-                    <h4> Rank </h4>
-                    <div>
-                        <label class="radio">
-                            <input name="octavePreset" id="flat" value="flat" type="radio">
-                            Flat
-                        </label>
-                    </div>
-                    <div>
-                        <label class="radio"> 
-                            <input name="octavePreset" id="vally" value="vally" type="radio" checked>
-                            Vally
-                        </label>
-                    </div>
-                    <div>
-                        <label class="radio"> 
-                            <input name="octavePreset" id="mountain" value="mountain" type="radio">
-                            Mountain
-                        </label>
-                    </div>
+                        <h4> File Presets </h4>
 
-                    <h4> File Presets </h4>
+                        <div>
+                            <label class="radio">
+                                <input name="notePreset" id="german" value="german" type="radio" checked>
+                                German Notation
+                            </label>
+                        </div>
+                        <div>
+                            <label class="radio"> 
+                                <input name="notePreset" id="jazz" value="jazz" type="radio">
+                                C Bebop Scale
+                            </label>
+                        </div>
+                        <div>
+                            <label class="radio"> 
+                                <input name="notePreset" id="scale" value="scale" type="radio">
+                                C Major Scale
+                            </label>
+                        </div>
 
-                    <div>
-                        <label class="radio">
-                            <input name="notePreset" id="german" value="german" type="radio" checked>
-                            German Notation
-                        </label>
-                    </div>
-                    <div>
-                        <label class="radio"> 
-                            <input name="notePreset" id="jazz" value="jazz" type="radio">
-                            C Bebop Scale
-                        </label>
-                    </div>
-                    <div>
-                        <label class="radio"> 
-                            <input name="notePreset" id="scale" value="scale" type="radio">
-                            C Major Scale
-                        </label>
-                    </div>
-
-                    <h4> File </h4>
-                    <div class="control-group">
-                        <label class="control-label" for="file_a">A</label class="control-label">
-                        <select id="file_a" class="btn btn-mini">
-                            <option value="C">C</option>
-                            <option value="C#">C#</option>
-                            <option value="D">D</option>
-                            <option value="D#">D#/Eb</option>
-                            <option value="E">E</option>
-                            <option value="F">F</option>
-                            <option value="F#">F#</option>
-                            <option value="G">G</option>
-                            <option value="G#">G#/Ab</option>
-                            <option value="A" selected>A</option>
-                            <option value="Bb">Bb</option>
-                            <option value="B">B</option>
-                        </select>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="file_b">B</label class="control-label">
-                        <select id="file_b">
-                            <option value="C">C</option>
-                            <option value="C#">C#</option>
-                            <option value="D">D</option>
-                            <option value="D#">D#/Eb</option>
-                            <option value="E">E</option>
-                            <option value="F">F</option>
-                            <option value="F#">F#</option>
-                            <option value="G">G</option>
-                            <option value="G#">G#/Ab</option>
-                            <option value="A" >A</option>
-                            <option value="Bb" selected>Bb</option>
-                            <option value="B">B</option>
-                        </select>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="file_c">C</label class="control-label">
-                        <select id="file_c">
-                            <option value="C" selected>C</option>
-                            <option value="C#">C#</option>
-                            <option value="D">D</option>
-                            <option value="D#">D#/Eb</option>
-                            <option value="E">E</option>
-                            <option value="F">F</option>
-                            <option value="F#">F#</option>
-                            <option value="G">G</option>
-                            <option value="G#">G#/Ab</option>
-                            <option value="A">A</option>
-                            <option value="Bb">Bb</option>
-                            <option value="B">B</option>
-                        </select>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="file_d">D</label class="control-label">
-                        <select id="file_d">
-                            <option value="C">C</option>
-                            <option value="C#">C#</option>
-                            <option value="D" selected>D</option>
-                            <option value="D#">D#/Eb</option>
-                            <option value="E">E</option>
-                            <option value="F">F</option>
-                            <option value="F#">F#</option>
-                            <option value="G">G</option>
-                            <option value="G#">G#/Ab</option>
-                            <option value="A">A</option>
-                            <option value="Bb">Bb</option>
-                            <option value="B">B</option>
-                        </select>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="file_e">E</label class="control-label">
-                        <select id="file_e">
-                            <option value="C">C</option>
-                            <option value="C#">C#</option>
-                            <option value="D">D</option>
-                            <option value="D#">D#/Eb</option>
-                            <option value="E" selected>E</option>
-                            <option value="F">F</option>
-                            <option value="F#">F#</option>
-                            <option value="G">G</option>
-                            <option value="G#">G#/Ab</option>
-                            <option value="A">A</option>
-                            <option value="Bb">Bb</option>
-                            <option value="B">B</option>
-                        </select>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="file_f">F</label class="control-label">
-                        <select id="file_f">
-                            <option value="C">C</option>
-                            <option value="C#">C#</option>
-                            <option value="D">D</option>
-                            <option value="D#">D#/Eb</option>
-                            <option value="E">E</option>
-                            <option value="F" selected>F</option>
-                            <option value="F#">F#</option>
-                            <option value="G">G</option>
-                            <option value="G#">G#/Ab</option>
-                            <option value="A">A</option>
-                            <option value="Bb">Bb</option>
-                            <option value="B">B</option>
-                        </select>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="file_g">G</label class="control-label">
-                        <select id="file_g">
-                            <option value="C">C</option>
-                            <option value="C#">C#</option>
-                            <option value="D">D</option>
-                            <option value="D#">D#/Eb</option>
-                            <option value="E">E</option>
-                            <option value="F">F</option>
-                            <option value="F#">F#</option>
-                            <option value="G" selected>G</option>
-                            <option value="G#">G#/Ab</option>
-                            <option value="A">A</option>
-                            <option value="Bb">Bb</option>
-                            <option value="B">B</option>
-                        </select>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="file_h">H</label class="control-label">
-                        <select id="file_h">
-                            <option value="C">C</option>
-                            <option value="C#">C#</option>
-                            <option value="D">D</option>
-                            <option value="D#">D#/Eb</option>
-                            <option value="E">E</option>
-                            <option value="F">F</option>
-                            <option value="F#">F#</option>
-                            <option value="G">G</option>
-                            <option value="G#">G#/Ab</option>
-                            <option value="A">A</option>
-                            <option value="Bb">Bb</option>
-                            <option value="B" selected>B</option>
-                        </select>
-                    </div>
-                </form>
+                        <h4> File </h4>
+                        <div class="control-group">
+                            <label class="control-label" for="file_a">A</label class="control-label">
+                            <select id="file_a" class="btn btn-mini">
+                                <option value="C">C</option>
+                                <option value="C#">C#</option>
+                                <option value="D">D</option>
+                                <option value="D#">D#/Eb</option>
+                                <option value="E">E</option>
+                                <option value="F">F</option>
+                                <option value="F#">F#</option>
+                                <option value="G">G</option>
+                                <option value="G#">G#/Ab</option>
+                                <option value="A" selected>A</option>
+                                <option value="Bb">Bb</option>
+                                <option value="B">B</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="file_b">B</label class="control-label">
+                            <select id="file_b">
+                                <option value="C">C</option>
+                                <option value="C#">C#</option>
+                                <option value="D">D</option>
+                                <option value="D#">D#/Eb</option>
+                                <option value="E">E</option>
+                                <option value="F">F</option>
+                                <option value="F#">F#</option>
+                                <option value="G">G</option>
+                                <option value="G#">G#/Ab</option>
+                                <option value="A" >A</option>
+                                <option value="Bb" selected>Bb</option>
+                                <option value="B">B</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="file_c">C</label class="control-label">
+                            <select id="file_c">
+                                <option value="C" selected>C</option>
+                                <option value="C#">C#</option>
+                                <option value="D">D</option>
+                                <option value="D#">D#/Eb</option>
+                                <option value="E">E</option>
+                                <option value="F">F</option>
+                                <option value="F#">F#</option>
+                                <option value="G">G</option>
+                                <option value="G#">G#/Ab</option>
+                                <option value="A">A</option>
+                                <option value="Bb">Bb</option>
+                                <option value="B">B</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="file_d">D</label class="control-label">
+                            <select id="file_d">
+                                <option value="C">C</option>
+                                <option value="C#">C#</option>
+                                <option value="D" selected>D</option>
+                                <option value="D#">D#/Eb</option>
+                                <option value="E">E</option>
+                                <option value="F">F</option>
+                                <option value="F#">F#</option>
+                                <option value="G">G</option>
+                                <option value="G#">G#/Ab</option>
+                                <option value="A">A</option>
+                                <option value="Bb">Bb</option>
+                                <option value="B">B</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="file_e">E</label class="control-label">
+                            <select id="file_e">
+                                <option value="C">C</option>
+                                <option value="C#">C#</option>
+                                <option value="D">D</option>
+                                <option value="D#">D#/Eb</option>
+                                <option value="E" selected>E</option>
+                                <option value="F">F</option>
+                                <option value="F#">F#</option>
+                                <option value="G">G</option>
+                                <option value="G#">G#/Ab</option>
+                                <option value="A">A</option>
+                                <option value="Bb">Bb</option>
+                                <option value="B">B</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="file_f">F</label class="control-label">
+                            <select id="file_f">
+                                <option value="C">C</option>
+                                <option value="C#">C#</option>
+                                <option value="D">D</option>
+                                <option value="D#">D#/Eb</option>
+                                <option value="E">E</option>
+                                <option value="F" selected>F</option>
+                                <option value="F#">F#</option>
+                                <option value="G">G</option>
+                                <option value="G#">G#/Ab</option>
+                                <option value="A">A</option>
+                                <option value="Bb">Bb</option>
+                                <option value="B">B</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="file_g">G</label class="control-label">
+                            <select id="file_g">
+                                <option value="C">C</option>
+                                <option value="C#">C#</option>
+                                <option value="D">D</option>
+                                <option value="D#">D#/Eb</option>
+                                <option value="E">E</option>
+                                <option value="F">F</option>
+                                <option value="F#">F#</option>
+                                <option value="G" selected>G</option>
+                                <option value="G#">G#/Ab</option>
+                                <option value="A">A</option>
+                                <option value="Bb">Bb</option>
+                                <option value="B">B</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="file_h">H</label class="control-label">
+                            <select id="file_h">
+                                <option value="C">C</option>
+                                <option value="C#">C#</option>
+                                <option value="D">D</option>
+                                <option value="D#">D#/Eb</option>
+                                <option value="E">E</option>
+                                <option value="F">F</option>
+                                <option value="F#">F#</option>
+                                <option value="G">G</option>
+                                <option value="G#">G#/Ab</option>
+                                <option value="A">A</option>
+                                <option value="Bb">Bb</option>
+                                <option value="B" selected>B</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
 

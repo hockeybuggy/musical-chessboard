@@ -149,6 +149,11 @@ textarea {
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
+#sidebar_note_mapping {
+    padding: 0.5em;
+    background : #ddd;
+}
+
 .disabled {
     color : #888888;
 }
