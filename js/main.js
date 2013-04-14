@@ -123,7 +123,7 @@ function bind_squares(){
     $board.on("click", handle_square_click);
 }
 
-function handle_square_click() {
+function handle_square_click(event) {
     console.log(event.target.id);
     $square = $(event.target);
     highlight_square($square);
