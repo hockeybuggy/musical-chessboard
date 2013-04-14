@@ -141,6 +141,7 @@ textarea {
     background : #FF6600; /*TODO get this working*/
 }
 
+.rank_label,
 .file_label {
     color: #FFFFFF;
     font-size: 16px;

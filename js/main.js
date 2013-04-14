@@ -31,6 +31,14 @@ var noteToMidiMap = {
     "B":11
 };
 
+var octaveToColourMap = {
+    "1":"#00BF32",
+    "2":"#04819E",
+    "3":"#FF7F00",
+    "4":"#FF1E00",
+    "5":"#FFC900",
+    "6":"#600CAC"
+};
 var noteToColourMap = {
     "C":"#00BF32",
     "C#":"#38DF64",
@@ -107,16 +115,24 @@ function set_note_mapping(noteMap){
 function set_octave_mapping(octaveMap){
     console.log(octaveMap);
     currentOctaveMap = octaveMap;
-    //get_manual_noteMap();
+    updateRankStyle();
 }
 
 function updateFileStyle(){
-    for(var note in currentNoteMap){
-        console.log(currentNoteMap[note]);
-        lab = $(".file_label#" + note);
-        lab.css("background-color", noteToColourMap[currentNoteMap[note]]);
+    // Updates the labels of the file based on the current Note Mapping
+    for(var file in currentNoteMap){
+        lab = $(".file_label#" + file);
+        lab.css("background-color", noteToColourMap[currentNoteMap[file]]);
     }
-
+}
+function updateRankStyle(){
+    // Updates the labels of the rank based on the current rank Mapping
+    for(var rank in currentOctaveMap){
+        console.log(currentOctaveMap[rank]);
+        lab = $(".rank_label#rank_label_" + rank);
+        console.log(lab);
+        lab.css("background-color", octaveToColourMap[currentOctaveMap[rank]]);
+    }
 }
 
 function set_option(selectId, optionId) {
@@ -220,6 +236,7 @@ function init_board(){
     $(".rank_label").css("background-color", "#aaaaaa").css("width", "20px");
     $(".file_label").css("background-color", "#aaaaaa").css("height", "20px");
     updateFileStyle();
+    updateRankStyle();
 }
 
 function init_sound() {
