@@ -55,7 +55,7 @@ var noteToColourMap = {
 };
 
 currentNoteMap = germanNoteMap; // Set default mappings
-currentOctaveMap = flatOctaveMap;
+currentOctaveMap = vallyOctaveMap;
 
 init_board();
 init_sound();
